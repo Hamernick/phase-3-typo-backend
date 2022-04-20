@@ -25,7 +25,11 @@ class ApplicationController < Sinatra::Base
     notebook = Notebook.find_by(:title => params[:title])
     notebook.to_json(include: :notes)
   end
-
+  
+  get '/users/notebooks/:id' do
+    notebook = User.find(params[:id]).notebooks
+    notebook.to_json(include: :notes)
+  end
 
   post '/users' do
     user = User.create(
