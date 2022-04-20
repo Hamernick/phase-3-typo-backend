@@ -48,5 +48,13 @@ class ApplicationController < Sinatra::Base
     user.to_json(include: { notes: {include: :notebook}})
   end
 
+  delete '/notes/:id' do
+    # find the review using the ID
+    note = Note.find(params[:id])
+    # delete the review
+    note.destroy
+    # send a response with the deleted review as JSON
+    note.to_json
+  end
 
 end
