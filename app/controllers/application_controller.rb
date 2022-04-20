@@ -21,6 +21,11 @@ class ApplicationController < Sinatra::Base
     user.to_json
   end
 
+  get '/notebook/:title' do
+    notebook = Notebook.find_by(:title => params[:title])
+    notebook.to_json(include: :notes)
+  end
+
 
   post '/users' do
     user = User.create(
@@ -47,6 +52,11 @@ class ApplicationController < Sinatra::Base
     user = User.find_by(:name => params[:name])
     user.to_json(include: { notes: {include: :notebook}})
   end
+
+  # get 'notebooks/:name' do
+  #   user = User.find_by(:name => params[:name])
+  #   user.to_json(include: { notes: {include: :notebook}})
+  # end
 
   delete '/notes/:id' do
     # find the review using the ID
