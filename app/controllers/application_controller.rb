@@ -47,9 +47,19 @@ class ApplicationController < Sinatra::Base
       title: params[:title],
       body: params[:body],
       notebook_id: params[:notebook_id],
-      user_id: params[:user_id]
+      user_id: params[:user_id],
+      updated_at: params[:updated_at]
     )
     note.to_json
+  end
+
+  post '/new_notebook' do
+    notebook = Notebook.create(
+      title: params[:title],
+      created_at: params[:created_at],
+      updated_at: params[:updated_at]
+    )
+    notebook.to_json
   end
 
   get '/login/:name' do
@@ -57,17 +67,23 @@ class ApplicationController < Sinatra::Base
     user.to_json(include: { notes: {include: :notebook}})
   end
 
-  # get 'notebooks/:name' do
-  #   user = User.find_by(:name => params[:name])
-  #   user.to_json(include: { notes: {include: :notebook}})
-  # end
-
   delete '/notes/:id' do
     # find the review using the ID
     note = Note.find(params[:id])
     # delete the review
     note.destroy
     # send a response with the deleted review as JSON
+    note.to_json
+  end
+
+
+  patch '/notes/:id' do
+    note = Note.find(params[:id])
+    note.update(
+      title: params[:title],
+      body: params[:body],
+      updated_at: params[:updated_at]
+    )
     note.to_json
   end
 
