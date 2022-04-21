@@ -76,6 +76,12 @@ class ApplicationController < Sinatra::Base
     note.to_json
   end
 
+  delete '/notebooks/:id' do
+    notebook = Notebook.find(params[:id])
+    notebook.destroy
+    notebook.to_json
+  end
+
 
   patch '/notes/:id' do
     note = Note.find(params[:id])
