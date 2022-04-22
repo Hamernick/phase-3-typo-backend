@@ -5,9 +5,9 @@ User.destroy_all
 
 puts "Seeding Users..."
 
-User.create!(name: "james cameron", bio: "i am james cameraman", email: "james.cameraman@forhire.com", picture: "https://cdn.britannica.com/84/160284-050-695B1DE3/James-Cameron-2012.jpg")
-User.create!(name: "William Liu", bio: "i am william aka tha real will i am", email: "william@igottafeelin.com", picture: "https://ca.slack-edge.com/T02MD9XTF-U02SHR9GT6U-6aabe560127a-192")
-User.create!(name: "Caleb Hamernick", bio: "I am half ham", email: "caleb@hamernick.com", picture: "https://ca.slack-edge.com/T02MD9XTF-U0308PFKVGX-d709024abba2-72")
+User.create!(username: "jamescameron", first_name: "james", last_name: "cameraman", bio: "i am james cameraman", email: "james.cameraman@forhire.com", picture: "https://cdn.britannica.com/84/160284-050-695B1DE3/James-Cameron-2012.jpg")
+User.create!(username: "WilliamLiu", first_name: "william", last_name: "liu", bio: "i am william aka tha real will i am", email: "william@igottafeelin.com", picture: "https://ca.slack-edge.com/T02MD9XTF-U02SHR9GT6U-6aabe560127a-192")
+User.create!(username: "CalebHamernick", first_name: "Caleb", last_name: "Hamernick", bio: "I am half ham", email: "caleb@hamernick.com", picture: "https://ca.slack-edge.com/T02MD9XTF-U0308PFKVGX-d709024abba2-72")
 
 
 puts "Seeding Notebooks..."
